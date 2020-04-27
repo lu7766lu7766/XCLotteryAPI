@@ -1,0 +1,14 @@
+{
+    "name": "Cooperation",
+    "alias": "cooperation",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Cooperation\\Providers\\CooperationServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
