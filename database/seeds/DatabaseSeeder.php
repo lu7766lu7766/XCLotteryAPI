@@ -8,6 +8,7 @@ use Modules\Account\Database\Seeders\AccountNodeSeeder;
 use Modules\Passport\Database\Seeders\PassportDatabaseSeeder;
 use Modules\Role\Database\Seeders\RoleDatabaseSeeder;
 use Modules\Role\Database\Seeders\RoleNodeSeeder;
+use Modules\Site\Database\Seeders\SiteNodeDatabaseSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,5 +29,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PassportDatabaseSeeder::class);
         $this->call(AccountLoginHistoryNodeTableSeeder::class);
         // third : your seeder
+        $this->call(SiteNodeDatabaseSeeder::class);
     }
 }
