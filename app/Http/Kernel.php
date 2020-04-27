@@ -26,7 +26,8 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        TrustProxies::class
+        TrustProxies::class,
+        HandleCors::class
     ];
     /**
      * The application's route middleware groups.
@@ -47,7 +48,6 @@ class Kernel extends HttpKernel
         'api' => [
             'debug_cnf',
             'throttle:300,1', // 單一user每N分鐘X次request的意思(任意入口統合計算)
-            'cros',
             'auth:api', // 認證使用config/auth.php => guards.api,
             'json_response',
         ]
@@ -68,7 +68,6 @@ class Kernel extends HttpKernel
         'guest'         => RedirectIfAuthenticated::class,
         'signed'        => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle'      => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'cros'          => HandleCors::class,
         'json_response' => CodeDataJsonResponse::class,
         'debug_cnf'     => DebugConfigure::class,
     ];

@@ -1,7 +1,7 @@
 <?php
 Route::group(
     [
-        'middleware' => ['cros', 'throttle:20,1'],
+        'middleware' => ['throttle:20,1'],
         'prefix'     => 'passport',
         'namespace'  => 'Modules\Passport\Http\Controllers'
     ],
