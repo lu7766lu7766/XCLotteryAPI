@@ -5,6 +5,7 @@ namespace Modules\Lottery\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 use Modules\Lottery\Policies\LotteryClassifiedPolicy;
+use Modules\Lottery\Policies\LotteryPolicy;
 
 class LotteryServiceProvider extends ServiceProvider
 {
@@ -31,6 +32,7 @@ class LotteryServiceProvider extends ServiceProvider
     {
         $this->app->register(RouteServiceProvider::class);
         \Gate::policy(LotteryClassifiedPolicy::class, LotteryClassifiedPolicy::class);
+        \Gate::policy(LotteryPolicy::class, LotteryPolicy::class);
     }
 
     /**

@@ -12,6 +12,7 @@
     "doctrine/dbal": "^2.10",
     "fideloper/proxy": "^4.0",
     "fruitcake/laravel-cors": "^1.0",
+    "i2xc/xc-caipiao-lottery": "^1.0",
     "intervention/image": "^2.5",
     "laravel/framework": "^6.2",
     "laravel/passport": "^8.4",
@@ -29,6 +30,12 @@
     "nunomaduro/collision": "^3.0",
     "phpunit/phpunit": "^8.0"
   },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:i2xc/xc-caipiao-lottery.git"
+    }
+  ],
   "autoload": {
     "classmap": [
       "database/seeds",

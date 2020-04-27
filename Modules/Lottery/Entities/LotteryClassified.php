@@ -15,6 +15,6 @@ class LotteryClassified extends BaseORM
     protected $table = 'lottery_classified';
     protected $fillable = [
         'name',
-        'status'
+        'enable'
     ];
 }

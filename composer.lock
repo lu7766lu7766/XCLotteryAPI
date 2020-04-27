@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9abbf3282c7a2ba593148261f601741a",
+    "content-hash": "4d63aa3461e8bde94a84fbb6ced79d69",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1087,6 +1087,51 @@
             "time": "2019-07-01T23:21:34+00:00"
         },
         {
+            "name": "i2xc/xc-caipiao-lottery",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:i2xc/xc-caipiao-lottery.git",
+                "reference": "c4d1169693c44861b93072029e0c6167e3e09103"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/i2xc/xc-caipiao-lottery/zipball/c4d1169693c44861b93072029e0c6167e3e09103",
+                "reference": "c4d1169693c44861b93072029e0c6167e3e09103",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "xc-php/independent-kit": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Caipiao\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Caipiao\\Tests\\": "tests/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "ed",
+                    "email": "apple7color@gmail.com"
+                }
+            ],
+            "description": "彩票API數據源",
+            "support": {
+                "source": "https://github.com/i2xc/xc-caipiao-lottery/tree/1.0.0",
+                "issues": "https://github.com/i2xc/xc-caipiao-lottery/issues"
+            },
+            "time": "2020-04-15T03:44:44+00:00"
+        },
+        {
             "name": "intervention/image",
             "version": "2.5.1",
             "source": {
@@ -1196,6 +1241,7 @@
                     "email": "jakub.onderka@gmail.com"
                 }
             ],
+            "abandoned": "php-parallel-lint/php-console-color",
             "time": "2018-09-29T17:23:10+00:00"
         },
         {
@@ -1242,6 +1288,7 @@
                 }
             ],
             "description": "Highlight PHP code in terminal",
+            "abandoned": "php-parallel-lint/php-console-highlighter",
             "time": "2018-09-29T18:48:56+00:00"
         },
         {

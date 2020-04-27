@@ -1,5 +1,4 @@
 <?php
-
 return [
-    'name' => 'Lottery'
+    'image_path' => 'lottery/image'
 ];
