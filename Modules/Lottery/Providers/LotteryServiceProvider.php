@@ -4,8 +4,11 @@ namespace Modules\Lottery\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Lottery\Console\GetLotteryDrawResult;
+use Modules\Lottery\Console\GetLotterySchedule;
 use Modules\Lottery\Policies\LotteryClassifiedPolicy;
 use Modules\Lottery\Policies\LotteryPolicy;
+use Modules\Lottery\Policies\LotteryResultPolicy;
 
 class LotteryServiceProvider extends ServiceProvider
 {
@@ -33,6 +36,9 @@ class LotteryServiceProvider extends ServiceProvider
         $this->app->register(RouteServiceProvider::class);
         \Gate::policy(LotteryClassifiedPolicy::class, LotteryClassifiedPolicy::class);
         \Gate::policy(LotteryPolicy::class, LotteryPolicy::class);
+        \Gate::policy(LotteryResultPolicy::class, LotteryResultPolicy::class);
+        $this->commands(GetLotterySchedule::class);
+        $this->commands(GetLotteryDrawResult::class);
     }
 
     /**

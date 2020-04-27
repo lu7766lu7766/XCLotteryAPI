@@ -1088,16 +1088,16 @@
         },
         {
             "name": "i2xc/xc-caipiao-lottery",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:i2xc/xc-caipiao-lottery.git",
-                "reference": "c4d1169693c44861b93072029e0c6167e3e09103"
+                "reference": "eb6a87d4dbf2b154accdd5a8d0c3d8c4f96b3500"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/i2xc/xc-caipiao-lottery/zipball/c4d1169693c44861b93072029e0c6167e3e09103",
-                "reference": "c4d1169693c44861b93072029e0c6167e3e09103",
+                "url": "https://api.github.com/repos/i2xc/xc-caipiao-lottery/zipball/eb6a87d4dbf2b154accdd5a8d0c3d8c4f96b3500",
+                "reference": "eb6a87d4dbf2b154accdd5a8d0c3d8c4f96b3500",
                 "shasum": ""
             },
             "require": {
@@ -1126,10 +1126,10 @@
             ],
             "description": "彩票API數據源",
             "support": {
-                "source": "https://github.com/i2xc/xc-caipiao-lottery/tree/1.0.0",
+                "source": "https://github.com/i2xc/xc-caipiao-lottery/tree/1.0.1",
                 "issues": "https://github.com/i2xc/xc-caipiao-lottery/issues"
             },
-            "time": "2020-04-15T03:44:44+00:00"
+            "time": "2020-04-22T04:13:22+00:00"
         },
         {
             "name": "intervention/image",

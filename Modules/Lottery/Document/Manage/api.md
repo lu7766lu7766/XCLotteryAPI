@@ -146,3 +146,78 @@
 | <b>方法</b>  | GET                        |              |              |                     |      |
 | <b>權限</b>  | MANAGE_LOTTERY_READ或MANAG_LOTTERY_UPDATE        |         |            |          -          |      |
 | <b>參數</b>  |                             |              |              |                     |      |
+
+# 開獎結果
+
+> 列表
+
+| 項目         | 內容                         | 類型         | 預設         | 說明                  | 必填  |
+|-------------|-----------------------------|--------------|--------------|---------------------|-------|
+| <b>路徑</b>  |lottery_result/manage       |              |              |                     |      |
+| <b>方法</b>  | GET                        |              |              |                     |      |
+| <b>權限</b>  | MANAGE_LOTTERY_RESULT_READ       |              |              |          -          |      |
+| <b>參數</b>  |                             |              |              |                     |      |
+|             | start    | string      |              |      開始日期(格式:YYYY-mm-dd HH:ii:ss)        |   x  |
+|             | end    | string      |              |      結束日期(格式:YYYY-mm-dd HH:ii:ss)        |   x  |
+|             | classified_id    | integer      |              |      分類id        |   x  |
+|             | lottery_id    | integer      |              |      彩種id        |   x  |
+|             | enable            | string      |              |      狀態(Y:開/N:關)        |   x  |
+|             | period          | string      |              |      彩票期數       |   x  |
+|             | page              | integer      |         1     |      頁碼        |   x  |
+|             | perpage           | integer      |       20       |      每頁筆數        |   x  |
+
+> 總筆數
+
+| 項目         | 內容                         | 類型         | 預設         | 說明                  | 必填  |
+|-------------|-----------------------------|--------------|--------------|---------------------|-------|
+| <b>路徑</b>  |lottery_result/manage/total       |              |              |                     |      |
+| <b>方法</b>  | GET                        |              |              |                     |      |
+| <b>權限</b>  | MANAGE_LOTTERY_RESULT_READ       |              |              |          -          |      |
+| <b>參數</b>  |                             |              |              |                     |      |
+|             | start    | string      |              |      開始日期(格式:YYYY-mm-dd HH:ii:ss)        |   x  |
+|             | end    | string      |              |      結束日期(格式:YYYY-mm-dd HH:ii:ss)        |   x  |
+|             | classified_id    | integer      |              |      分類id        |   x  |
+|             | lottery_id    | integer      |              |      彩種id        |   x  |
+|             | enable            | string      |              |      狀態(Y:開/N:關)        |   x  |
+|             | period          | string      |              |      彩票期數       |   x  |
+
+> 詳細資訊
+
+| 項目         | 內容                         | 類型         | 預設         | 說明                  | 必填  |
+|-------------|-----------------------------|--------------|--------------|---------------------|-------|
+| <b>路徑</b>  |lottery_result/manage/info       |              |              |                     |      |
+| <b>方法</b>  | GET                        |              |              |                     |      |
+| <b>權限</b>  | MANAGE_LOTTERY_RESULT_READ          |              |              |          -          |      |
+| <b>參數</b>  |                             |              |              |                     |      |
+|             | id                      | integer      |              |     id        |   o  |
+
+> 編輯
+
+| 項目         | 內容                         | 類型         | 預設         | 說明                  | 必填  |
+|-------------|-----------------------------|--------------|--------------|---------------------|-------|
+| <b>路徑</b>  |lottery_result/manage/update       |              |              |                     |      |
+| <b>方法</b>  | POST                        |              |              |                     |      |
+| <b>權限</b>  | MANAGE_LOTTERY_RESULT_UPDATE          |              |              |          -          |      |
+| <b>參數</b>  |                             |              |              |                     |      |
+|             | id                      | integer      |              |      id        |   o  |
+|             | winning_numbers          | array      |      |  開獎號碼  |   o  |
+|             | enable                 | string      |         | 狀態(Y:開/N:關)      |   o  |
+
+> 刪除
+
+| 項目         | 內容                         | 類型         | 預設         | 說明                  | 必填  |
+|-------------|-----------------------------|--------------|--------------|---------------------|-------|
+| <b>路徑</b>  |lottery_result/manage/del      |              |              |                     |      |
+| <b>方法</b>  | DELETE                        |              |              |                     |      |
+| <b>權限</b>  | MANAGE_LOTTERY_RESULT_DELETE          |              |              |          -          |      |
+| <b>參數</b>  |                             |              |              |                     |      |
+|             | id                      | integer      |              |      id        |   o  |
+
+> 查詢選項
+
+| 項目         | 內容                         | 類型         | 預設         | 說明                  | 必填  |
+|-------------|-----------------------------|--------------|--------------|---------------------|-------|
+| <b>路徑</b>  |lottery_result/manage/options       |              |              |                     |      |
+| <b>方法</b>  | GET                        |              |              |                     |      |
+| <b>權限</b>  | MANAGE_LOTTERY_RESULT_READ       |         |            |          -          |      |
+| <b>參數</b>  |                             |              |              |                     |      |

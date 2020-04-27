@@ -22,7 +22,8 @@ use Illuminate\Database\Eloquent\Builder as ORMBuilder;
  * @method static ORMBuilder whereIn($column, $value = null, $boolean = 'and', $not = false)
  * @method static ORMBuilder whereHas($relation, Closure $callback = null, $operator = '>=', $count = 1)
  * @method static ORMBuilder with($relations)
- * @method null|bool delete()
+ * @method static bool insert(array $values)
+ * @method static null|bool delete()
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 trait ORMDocHelp

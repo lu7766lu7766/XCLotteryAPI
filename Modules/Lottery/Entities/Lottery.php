@@ -16,6 +16,7 @@ use Modules\Base\Entities\BaseORM;
  * Class Lottery
  * @package Modules\Lottery\Entities
  * @property string image_path
+ * @property string $code
  */
 class Lottery extends BaseORM
 {
