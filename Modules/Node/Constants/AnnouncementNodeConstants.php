@@ -1,0 +1,18 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: funny
+ * Date: 2020/3/31
+ * Time: 下午 06:54
+ */
+
+namespace Modules\Node\Constants;
+
+class AnnouncementNodeConstants
+{
+    const MANAGE_ANNOUNCEMENT = 'MANAGE_ANNOUNCEMENT';
+    const MANAGE_ANNOUNCEMENT_READ = 'MANAGE_ANNOUNCEMENT_READ';
+    const MANAGE_ANNOUNCEMENT_CREATE = 'MANAGE_ANNOUNCEMENT_CREATE';
+    const MANAGE_ANNOUNCEMENT_UPDATE = 'MANAGE_ANNOUNCEMENT_UPDATE';
+    const MANAGE_ANNOUNCEMENT_DELETE = 'MANAGE_ANNOUNCEMENT_DELETE';
+}
