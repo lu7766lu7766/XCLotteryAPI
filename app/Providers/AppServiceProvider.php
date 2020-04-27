@@ -7,6 +7,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 use Modules\Announcement\Entities\Announcement;
+use Modules\Copywriting\Entities\Copywriting;
 use Modules\Files\Contracts\IEditorFilesProvider;
 use Modules\Files\Repositories\EditorFilesRepo;
 
@@ -35,6 +36,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(IEditorFilesProvider::class, function (Application $app) {
             return new EditorFilesRepo();
         });
-        Relation::morphMap(['announcement' => Announcement::class]);
+        Relation::morphMap([
+            'announcement' => Announcement::class,
+            'copywriting'  => Copywriting::class
+        ]);
     }
 }

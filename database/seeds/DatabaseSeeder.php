@@ -5,6 +5,7 @@ use Illuminate\Database\Seeder;
 use Modules\Account\Database\Seeders\AccountDatabaseSeeder;
 use Modules\Account\Database\Seeders\AccountLoginHistoryNodeTableSeeder;
 use Modules\Account\Database\Seeders\AccountNodeSeeder;
+use Modules\Copywriting\Database\Seeders\CopywritingNodeDatabaseSeeder;
 use Modules\Announcement\Database\Seeders\AnnouncementNodeSeeder;
 use Modules\Passport\Database\Seeders\PassportDatabaseSeeder;
 use Modules\Role\Database\Seeders\RoleDatabaseSeeder;
@@ -32,5 +33,6 @@ class DatabaseSeeder extends Seeder
         // third : your seeder
         $this->call(SiteNodeDatabaseSeeder::class);
         $this->call(AnnouncementNodeSeeder::class);
+        $this->call(CopywritingNodeDatabaseSeeder::class);
     }
 }
