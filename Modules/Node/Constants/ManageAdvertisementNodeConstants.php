@@ -1,0 +1,18 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: funny
+ * Date: 2020/3/26
+ * Time: 下午 04:01
+ */
+
+namespace Modules\Node\Constants;
+
+class ManageAdvertisementNodeConstants
+{
+    const MANAGE_ADVERTISEMENT = 'MANAGE_ADVERTISEMENT';
+    const MANAGE_ADVERTISEMENT_READ = 'MANAGE_ADVERTISEMENT_READ';
+    const MANAGE_ADVERTISEMENT_CREATE = 'MANAGE_ADVERTISEMENT_CREATE';
+    const MANAGE_ADVERTISEMENT_UPDATE = 'MANAGE_ADVERTISEMENT_UPDATE';
+    const MANAGE_ADVERTISEMENT_DELETE = 'MANAGE_ADVERTISEMENT_DELETE';
+}
