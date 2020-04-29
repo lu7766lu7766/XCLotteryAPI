@@ -4,7 +4,9 @@ namespace Modules\News\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\News\Console\GetNews;
 use Modules\News\Policies\NewsClassifiedPolicy;
+use Modules\News\Policies\NewsPolicy;
 
 class NewsServiceProvider extends ServiceProvider
 {
@@ -31,6 +33,8 @@ class NewsServiceProvider extends ServiceProvider
     {
         $this->app->register(RouteServiceProvider::class);
         \Gate::policy(NewsClassifiedPolicy::class, NewsClassifiedPolicy::class);
+        \Gate::policy(NewsPolicy::class, NewsPolicy::class);
+        $this->commands(GetNews::class);
     }
 
     /**

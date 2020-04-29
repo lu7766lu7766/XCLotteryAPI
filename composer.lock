@@ -4,8 +4,53 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d63aa3461e8bde94a84fbb6ced79d69",
+    "content-hash": "ff49e0959b6a36817db340ef4ffee778",
     "packages": [
+        {
+            "name": "3rdpay/xc-skywalk",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:i2xc/xc-skywalk.git",
+                "reference": "5fc6376706c9674c4d0f026bc6fc840dbbc6b536"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/i2xc/xc-skywalk/zipball/5fc6376706c9674c4d0f026bc6fc840dbbc6b536",
+                "reference": "5fc6376706c9674c4d0f026bc6fc840dbbc6b536",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1",
+                "xc-php/independent-kit": "^1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Skywalk\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Skywalk\\Tests\\": "tests/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "dayaponyuyen",
+                    "email": "dayaponyuyen@gmail.com"
+                }
+            ],
+            "description": "天行數據",
+            "support": {
+                "source": "https://github.com/i2xc/xc-skywalk/tree/1.0.3",
+                "issues": "https://github.com/i2xc/xc-skywalk/issues"
+            },
+            "time": "2020-03-17T09:26:59+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "1.3.0",

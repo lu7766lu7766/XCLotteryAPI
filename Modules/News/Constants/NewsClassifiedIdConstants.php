@@ -8,8 +8,6 @@
 
 namespace Modules\News\Constants;
 
-use Modules\Base\Http\Requests\BaseFormRequest;
-
 class NewsClassifiedIdConstants
 {
     const IMPORTANT = 361;

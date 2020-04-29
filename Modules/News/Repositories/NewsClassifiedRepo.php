@@ -83,4 +83,19 @@ class NewsClassifiedRepo
 
         return $result;
     }
+
+    /**
+     * @return Collection|NewsClassified[]
+     */
+    public function all()
+    {
+        try {
+            $result = NewsClassified::all();
+        } catch (\Throwable $e) {
+            $result = Collection::make();
+            LaravelLoggerUtil::loggerException($e);
+        }
+
+        return $result;
+    }
 }

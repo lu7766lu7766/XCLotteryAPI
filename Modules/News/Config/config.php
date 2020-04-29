@@ -1,5 +1,4 @@
 <?php
-
 return [
-    'name' => 'News'
+    'skywalk_key' => env('SKYWALK_KEY')
 ];

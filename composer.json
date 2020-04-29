@@ -9,6 +9,7 @@
   "type": "project",
   "require": {
     "php": "^7.2",
+    "3rdpay/xc-skywalk": "^1.0",
     "doctrine/dbal": "^2.10",
     "fideloper/proxy": "^4.0",
     "fruitcake/laravel-cors": "^1.0",
@@ -34,6 +35,10 @@
     {
       "type": "vcs",
       "url": "git@github.com:i2xc/xc-caipiao-lottery.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@github.com:i2xc/xc-skywalk.git"
     }
   ],
   "autoload": {

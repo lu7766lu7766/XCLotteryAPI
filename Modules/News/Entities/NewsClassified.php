@@ -10,6 +10,11 @@ namespace Modules\News\Entities;
 
 use Modules\Base\Entities\BaseORM;
 
+/**
+ * Class NewsClassified
+ * @package Modules\News\Entities
+ * @property int id
+ */
 class NewsClassified extends BaseORM
 {
     protected $table = 'news_classified';
