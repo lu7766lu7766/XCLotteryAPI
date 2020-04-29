@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Builder as ORMBuilder;
  * @method static null|$this find($id)
  * @method static null|$this first($columns = ['*'])
  * @method static null|$this create(array $attributes = [])
+ * @method static bool insert(array $values)
  * @method static ORMBuilder where($column, $operator = null, $value = null, $boolean = 'and')
  * @method static ORMBuilder whereKey($id)
  * @method static ORMBuilder whereIn($column, $value = null, $boolean = 'and', $not = false)

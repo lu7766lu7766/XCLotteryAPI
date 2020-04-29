@@ -5,6 +5,8 @@ use Illuminate\Database\Seeder;
 use Modules\Account\Database\Seeders\AccountDatabaseSeeder;
 use Modules\Account\Database\Seeders\AccountLoginHistoryNodeTableSeeder;
 use Modules\Account\Database\Seeders\AccountNodeSeeder;
+use Modules\News\Database\Seeders\NewsClassifiedDatabaseSeeder;
+use Modules\News\Database\Seeders\NewsClassifiedNodeDatabaseSeeder;
 use Modules\Lottery\Database\Seeders\LotteryClassifiedNodeDatabaseSeeder;
 use Modules\Lottery\Database\Seeders\LotteryItemDatabaseSeeder;
 use Modules\Lottery\Database\Seeders\LotteryNodeDatabaseSeeder;
@@ -43,9 +45,10 @@ class DatabaseSeeder extends Seeder
         $this->call(AdvertisementDatabaseSeeder::class);
         $this->call(CooperationNodeDatabaseSeeder::class);
         $this->call(LotteryClassifiedNodeDatabaseSeeder::class);
-        $this->call(LotteryClassifiedNodeDatabaseSeeder::class);
         $this->call(LotteryNodeDatabaseSeeder::class);
         $this->call(LotteryItemDatabaseSeeder::class);
         $this->call(LotteryResultNodeDatabaseSeeder::class);
+        $this->call(NewsClassifiedNodeDatabaseSeeder::class);
+        $this->call(NewsClassifiedDatabaseSeeder::class);
     }
 }
