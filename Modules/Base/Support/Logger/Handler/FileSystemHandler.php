@@ -66,7 +66,7 @@ class FileSystemHandler extends AbstractProcessingHandler
      * <\pre>
      * @return void
      */
-    protected function write(array $record)
+    protected function write(array $record): void
     {
         $path = $this->rootFolder . DIRECTORY_SEPARATOR
             . date('Y-m-d') . DIRECTORY_SEPARATOR
