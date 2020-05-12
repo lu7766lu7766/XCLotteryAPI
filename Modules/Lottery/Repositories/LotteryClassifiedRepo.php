@@ -119,9 +119,27 @@ class LotteryClassifiedRepo
     public function getAllEnable()
     {
         try {
-            $result = LotteryClassified::where('enable', NYEnumConstants::YES)->get();
+            $result = LotteryClassified::where('enable', NYEnumConstants::YES)
+                ->orderBy('sequence')
+                ->get();
         } catch (\Throwable $e) {
             $result = Collection::make();
+            LaravelLoggerUtil::loggerException($e);
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param int $id
+     * @return LotteryClassified|null
+     */
+    public function findEnableById(int $id)
+    {
+        try {
+            $result = LotteryClassified::where('enable', NYEnumConstants::YES)->find($id);
+        } catch (\Throwable $e) {
+            $result = null;
             LaravelLoggerUtil::loggerException($e);
         }
 
