@@ -18,15 +18,11 @@ class LotteryClassifiedRepo
     /**
      * @param string|null $name
      * @param string|null $enable
-     * @param int $page
-     * @param int $perpage
      * @return Collection|LotteryClassified[]
      */
     public function list(
         string $name = null,
-        string $enable = null,
-        int $page = 1,
-        int $perpage = 20
+        string $enable = null
     ) {
         try {
             $builder = LotteryClassified::query();
@@ -36,9 +32,7 @@ class LotteryClassifiedRepo
             if (!is_null($enable)) {
                 $builder->where('enable', $enable);
             }
-            $result = $builder->orderByDesc('id')
-                ->forPage($page, $perpage)
-                ->get();
+            $result = $builder->orderBy('sequence')->get();
         } catch (\Throwable $e) {
             $result = Collection::make();
             LaravelLoggerUtil::loggerException($e);

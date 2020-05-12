@@ -15,6 +15,7 @@ use Modules\Base\Entities\BaseORM;
 /**
  * Class LotteryClassified
  * @package Modules\Lottery\Entities
+ * @property string sequence
  * @property Lottery[]|Collection game
  */
 class LotteryClassified extends BaseORM
@@ -22,7 +23,8 @@ class LotteryClassified extends BaseORM
     protected $table = 'lottery_classified';
     protected $fillable = [
         'name',
-        'enable'
+        'enable',
+        'sequence'
     ];
 
     /**

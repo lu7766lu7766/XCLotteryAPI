@@ -15,6 +15,7 @@ use Modules\Lottery\Entities\LotteryClassified;
 use Modules\Lottery\Http\Requests\Manage\LotteryClassifiedCreateRequest;
 use Modules\Lottery\Http\Requests\Manage\LotteryClassifiedListRequest;
 use Modules\Lottery\Http\Requests\Manage\LotteryClassifiedUpdateRequest;
+use Modules\Lottery\Http\Requests\Manage\LotteryClassifiedUpdateSequenceRequest;
 use Modules\Lottery\Repositories\LotteryClassifiedRepo;
 
 class ManageLotteryClassifiedService
@@ -35,12 +36,7 @@ class ManageLotteryClassifiedService
      */
     public function list(LotteryClassifiedListRequest $request)
     {
-        return $this->repo->list(
-            $request->getName(),
-            $request->getEnable(),
-            $request->getPage(),
-            $request->getPerpage()
-        );
+        return $this->repo->list($request->getName(), $request->getEnable());
     }
 
     /**
@@ -121,5 +117,30 @@ class ManageLotteryClassifiedService
         }
 
         return $orm;
+    }
+
+    /**
+     * @param LotteryClassifiedUpdateSequenceRequest $request
+     * @return mixed
+     * @throws \Throwable
+     */
+    public function updateSequence(LotteryClassifiedUpdateSequenceRequest $request)
+    {
+        \DB::transaction(function () use ($request, &$result) {
+            /** @var \Illuminate\Support\Collection $result */
+            $result = collect($request->getSequence())
+                ->map(function ($sequence, $id) {
+                    $orm = $this->info($id);
+                    $orm->sequence = $sequence;
+                    $isSuccess = $this->repo->saveData($orm);
+                    if (!$isSuccess) {
+                        throw new ApiErrorCodeException(OOOO1CommonCodes::UPDATE_FAIL);
+                    }
+
+                    return $orm;
+                });
+        });
+
+        return $result->values()->sortBy('sequence');
     }
 }

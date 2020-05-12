@@ -10,9 +10,6 @@
 | <b>參數</b>  |                             |              |              |                     |      |
 |             | name                      | string      |              |      名稱(唯一值,長度最大30)        |   x  |
 |             | enable                      | string      |              |      狀態        |   x  |
-|             | page                      | integer      |         1     |      頁碼        |   x  |
-|             | perpage                      | integer      |       20       |      每頁筆數        |   x  |
-
 > 總筆數
 
 | 項目         | 內容                         | 類型         | 預設         | 說明                  | 必填  |
@@ -75,6 +72,17 @@
 | <b>方法</b>  | GET                        |              |              |                     |      |
 | <b>權限</b>  | MANAGE_LOTTERY_CLASSIFIED_READ或MANAGE_LOTTERY_CLASSIFIED_CREATE或MANAG_LOTTERY_CLASSIFIED_UPDATE           |              |              |          -          |      |
 | <b>參數</b>  |                             |              |              |                     |      |
+
+> 編輯排序
+
+| 項目         | 內容                         | 類型         | 預設         | 說明                  | 必填  |
+|-------------|-----------------------------|--------------|--------------|---------------------|-------|
+| <b>路徑</b>  |lottery_classified/manage/update_sequence   |      |              |              |      |
+| <b>方法</b>  | POST                        |              |              |                     |      |
+| <b>權限</b>  | MANAGE_LOTTERY_CLASSIFIED_UPDATE          |              |              |          -          |      |
+| <b>參數</b>  |                             |              |              |                     |      |
+|             | sequence      | object      |              |      排序資訊,格式為 sequence[分類id] => 順序    |   o  |
+
 
 # 彩種設置
 
@@ -144,7 +152,7 @@
 |-------------|-----------------------------|--------------|--------------|---------------------|-------|
 | <b>路徑</b>  |lottery/manage/options       |              |              |                     |      |
 | <b>方法</b>  | GET                        |              |              |                     |      |
-| <b>權限</b>  | MANAGE_LOTTERY_READ或MANAG_LOTTERY_UPDATE        |         |            |          -          |      |
+| <b>權限</b>  | MANAGE_LOTTERY_READ或MANAGE_LOTTERY_UPDATE        |         |            |          -          |      |
 | <b>參數</b>  |                             |              |              |                     |      |
 
 > 彩種規則編輯

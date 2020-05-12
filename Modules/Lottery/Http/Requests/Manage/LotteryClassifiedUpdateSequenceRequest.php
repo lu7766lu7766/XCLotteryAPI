@@ -2,32 +2,22 @@
 /**
  * Created by PhpStorm.
  * User: ed
- * Date: 2020/4/8
- * Time: 下午 04:28
+ * Date: 2020/5/4
+ * Time: 下午 02:55
  */
 
 namespace Modules\Lottery\Http\Requests\Manage;
 
-use Illuminate\Validation\Rule;
-use Modules\Base\Constants\NYEnumConstants;
 use Modules\Base\Http\Requests\BaseFormRequest;
 
-class LotteryClassifiedListRequest extends BaseFormRequest
+class LotteryClassifiedUpdateSequenceRequest extends BaseFormRequest
 {
     /**
-     * @return string|null
+     * @return array
      */
-    public function getName()
+    public function getSequence()
     {
-        return $this->get('name');
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getEnable()
-    {
-        return $this->get('enable');
+        return $this->get('sequence');
     }
 
     /**
@@ -40,8 +30,8 @@ class LotteryClassifiedListRequest extends BaseFormRequest
     public function rules()
     {
         return [
-            'name'   => 'sometimes|required|max:30',
-            'enable' => 'sometimes|required|string|' . Rule::in(NYEnumConstants::enum())
+            'sequence'   => 'required|array',
+            'sequence.*' => 'integer'
         ];
     }
 }

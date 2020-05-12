@@ -17,6 +17,7 @@ use Modules\Lottery\Http\Requests\Manage\LotteryClassifiedCreateRequest;
 use Modules\Lottery\Http\Requests\Manage\LotteryClassifiedInfoRequest;
 use Modules\Lottery\Http\Requests\Manage\LotteryClassifiedListRequest;
 use Modules\Lottery\Http\Requests\Manage\LotteryClassifiedUpdateRequest;
+use Modules\Lottery\Http\Requests\Manage\LotteryClassifiedUpdateSequenceRequest;
 use Modules\Lottery\Service\ManageLotteryClassifiedService;
 
 class ManageLotteryClassifiedController extends Controller
@@ -87,5 +88,15 @@ class ManageLotteryClassifiedController extends Controller
         return [
             'enable' => NYEnumConstants::enum()
         ];
+    }
+
+    /**
+     * @param LotteryClassifiedUpdateSequenceRequest $request
+     * @return mixed
+     * @throws \Throwable
+     */
+    public function updateSequence(LotteryClassifiedUpdateSequenceRequest $request)
+    {
+        return app(ManageLotteryClassifiedService::class)->updateSequence($request);
     }
 }

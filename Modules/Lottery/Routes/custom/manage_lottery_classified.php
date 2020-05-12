@@ -20,6 +20,7 @@ Route::group([
     Route::group(['middleware' => 'can:update,' . LotteryClassifiedPolicy::class], function () {
         Route::get('info', 'ManageLotteryClassifiedController@info');
         Route::post('update', 'ManageLotteryClassifiedController@update');
+        Route::post('update_sequence', 'ManageLotteryClassifiedController@updateSequence');
     });
     Route::post('create', 'ManageLotteryClassifiedController@create')
         ->middleware('can:create,' . LotteryClassifiedPolicy::class);
