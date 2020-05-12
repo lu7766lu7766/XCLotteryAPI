@@ -8,12 +8,12 @@
 
 namespace Modules\News\Entities;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Base\Entities\BaseORM;
 
 /**
  * Class NewsClassified
  * @package Modules\News\Entities
- * @property int id
  */
 class NewsClassified extends BaseORM
 {
@@ -22,4 +22,12 @@ class NewsClassified extends BaseORM
         'name',
         'enable'
     ];
+
+    /**
+     * @return HasMany
+     */
+    public function news()
+    {
+        return $this->hasMany(News::class, 'classified_id', 'id');
+    }
 }

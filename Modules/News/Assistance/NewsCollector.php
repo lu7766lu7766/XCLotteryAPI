@@ -39,11 +39,11 @@ class NewsCollector
     public function run()
     {
         $newClassified = app(NewsClassifiedRepo::class)->all();
-        $carbon = new Carbon();
-        $news = $newClassified->map(function (NewsClassified $classified) use ($carbon) {
-            $latestNews = app(NewsRepo::class)->getLatestNewsByWebPageIdWithTrashed($classified->id);
-            $latestPostTime = $latestNews->post_time ?? $carbon::today()->toDateTimeString();
-            $result = $this->eachMatchNews($classified->id, $latestPostTime);
+        $dateTime = Carbon::today()->toDateTimeString();
+        $news = $newClassified->map(function (NewsClassified $classified) use ($dateTime) {
+            $latestNews = app(NewsRepo::class)->getLatestNewsByWebPageIdWithTrashed($classified->getKey());
+            $latestPostTime = $latestNews->post_time ?? $dateTime;
+            $result = $this->eachMatchNews($classified->getKey(), $latestPostTime);
 
             return $result;
         })

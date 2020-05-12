@@ -10,8 +10,12 @@ namespace Modules\News\Repositories;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Modules\Base\Constants\NYEnumConstants;
 use Modules\Base\Util\LaravelLoggerUtil;
+use Modules\Lottery\Entities\LotteryClassified;
 use Modules\News\Entities\News;
+use Modules\News\Entities\NewsClassified;
 
 class NewsRepo
 {
@@ -180,6 +184,96 @@ class NewsRepo
             $result = is_null($del) ? false : $del;
         } catch (\Throwable $e) {
             $result = false;
+            LaravelLoggerUtil::loggerException($e);
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param int $classifiedId
+     * @param int $page
+     * @param int $perpage
+     * @return LotteryClassified|null
+     */
+    public function listByClassifiedId(int $classifiedId, int $page = 1, int $perpage = 20)
+    {
+        try {
+            $result = NewsClassified::whereKey($classifiedId)->where('enable', NYEnumConstants::YES)
+                ->with([
+                    'news' => function (HasMany $builder) use ($page, $perpage) {
+                        $builder->where('news.enable', NYEnumConstants::YES)
+                            ->orderByDesc('news.post_time')
+                            ->forPage($page, $perpage);
+                    }
+                ])
+                ->whereHas('news', function (Builder $builder) {
+                    $builder->where('news.enable', NYEnumConstants::YES);
+                })
+                ->first();
+        } catch (\Exception $e) {
+            $result = null;
+            LaravelLoggerUtil::loggerException($e);
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param int $classifiedId
+     * @return int
+     */
+    public function listByClassifiedIdTotal(int $classifiedId)
+    {
+        try {
+            $result = News::where('enable', NYEnumConstants::YES)
+                ->whereHas('classified', function (Builder $builder) use ($classifiedId) {
+                    $builder->whereKey($classifiedId)
+                        ->where('news_classified.enable', NYEnumConstants::YES);
+                })
+                ->count();
+        } catch (\Exception $e) {
+            $result = 0;
+            LaravelLoggerUtil::loggerException($e);
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param int $id
+     * @return News|null
+     */
+    public function findEnableById(int $id)
+    {
+        try {
+            $result = News::whereKey($id)
+                ->where('enable', NYEnumConstants::YES)
+                ->whereHas('classified', function (Builder $builder) {
+                    $builder->where('enable', NYEnumConstants::YES);
+                })
+                ->first();
+        } catch (\Throwable $e) {
+            $result = null;
+            LaravelLoggerUtil::loggerException($e);
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param int $limit
+     * @return News[]|Collection
+     */
+    public function latest(int $limit)
+    {
+        try {
+            $result = News::where('enable', NYEnumConstants::YES)
+                ->orderByDesc('post_time')
+                ->take($limit)
+                ->get();
+        } catch (\Throwable $e) {
+            $result = Collection::make();
             LaravelLoggerUtil::loggerException($e);
         }
 

@@ -11,6 +11,11 @@ namespace Modules\News\Entities;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Base\Entities\BaseORM;
 
+/**
+ * Class NewsFullText
+ * @package Modules\News\Entities
+ * @property string enable
+ */
 class NewsFullText extends BaseORM
 {
     protected $table = 'news_full_text';
