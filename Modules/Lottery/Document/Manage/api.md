@@ -135,6 +135,7 @@
 |             | image                  | file      |              |  圖片(長寬上限為100 x 100)  |   x  |
 |             | enable                 | string      |         | 狀態(Y:開/N:關)      |   o  |
 |             | del_image                 | string      |         | 要刪圖請傳Y      |   x  |
+|             | description     | string      |              |  描述(字串長度上限255) |   x  |
 
 > 刪除
 

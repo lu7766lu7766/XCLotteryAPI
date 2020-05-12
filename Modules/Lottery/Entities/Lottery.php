@@ -29,6 +29,7 @@ class Lottery extends BaseORM
         'name',
         'code',
         'enable',
+        'description',
         'rule'
     ];
 

@@ -63,6 +63,14 @@ class LotteryUpdateRequest extends BaseFormRequest
     }
 
     /**
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->get('description');
+    }
+
+    /**
      * Request args validate rules.
      * @link https://laravel.com/docs/master/validation lookup link and know how to write rule.
      * @return array
@@ -78,7 +86,8 @@ class LotteryUpdateRequest extends BaseFormRequest
             'name'             => 'sometimes|required|max:20',
             'image'            => 'sometimes|required|image|dimensions:max_width=100,max_height=100',
             'enable'           => 'required|string|' . Rule::in(NYEnumConstants::enum()),
-            'del_image'        => 'sometimes|required|' . Rule::in(NYEnumConstants::YES)
+            'del_image'        => 'sometimes|required|' . Rule::in(NYEnumConstants::YES),
+            'description'      => 'sometimes|required|string|max:255'
         ];
     }
 }

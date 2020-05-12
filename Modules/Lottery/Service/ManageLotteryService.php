@@ -100,8 +100,9 @@ class ManageLotteryService
             throw new ApiErrorCodeException(OOOO1CommonCodes::MODEL_NOT_FOUND);
         }
         $orm->fill([
-            'name'   => $request->getName(),
-            'enable' => $request->getEnable()
+            'name'        => $request->getName(),
+            'enable'      => $request->getEnable(),
+            'description' => $request->getDescription()
         ]);
         if (!is_null($request->getDelImage())) {
             $cloud->delete($orm->image_path);
