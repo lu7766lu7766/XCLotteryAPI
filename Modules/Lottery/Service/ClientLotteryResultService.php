@@ -8,6 +8,8 @@
 
 namespace Modules\Lottery\Service;
 
+use Modules\Lottery\Entities\Lottery;
+use Modules\Lottery\Entities\LotteryClassified;
 use Modules\Lottery\Http\Requests\Client\LotteryResultListRequest;
 use Modules\Lottery\Repositories\LotteryResultRepo;
 
@@ -30,5 +32,22 @@ class ClientLotteryResultService
         );
 
         return is_null($result) ? $result : $result->load('classified');
+    }
+
+    /**
+     * @param int $id
+     * @return LotteryClassified|null
+     */
+    public function listByClassified(int $id)
+    {
+        $repo = app(LotteryResultRepo::class);
+        $classified = $repo->getGameByClassified($id);
+        if (!is_null($classified)) {
+            $classified = $classified->game->each(function (Lottery $lottery) use ($repo) {
+                $lottery->setRelation('drawResult', $repo->findLatestDrawRecord($lottery->getKey()));
+            });
+        }
+
+        return $classified;
     }
 }

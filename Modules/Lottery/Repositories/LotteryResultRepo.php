@@ -10,10 +10,12 @@ namespace Modules\Lottery\Repositories;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Base\Constants\NYEnumConstants;
 use Modules\Base\Util\LaravelLoggerUtil;
 use Modules\Lottery\Entities\Lottery;
+use Modules\Lottery\Entities\LotteryClassified;
 use Modules\Lottery\Entities\LotteryResult;
 
 class LotteryResultRepo
@@ -265,6 +267,51 @@ class LotteryResultRepo
                         }
                     }
                 ])
+                ->first();
+        } catch (\Throwable $e) {
+            $result = null;
+            LaravelLoggerUtil::loggerException($e);
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param int $id
+     * @return LotteryClassified|null
+     */
+    public function getGameByClassified(int $id)
+    {
+        try {
+            $result = LotteryClassified::whereKey($id)->where('enable', NYEnumConstants::YES)
+                ->with([
+                    'game' => function (BelongsToMany $builder) {
+                        $builder->where('enable', NYEnumConstants::YES);
+                    }
+                ])
+                ->whereHas('game', function (Builder $builder) {
+                    $builder->where('enable', NYEnumConstants::YES);
+                })
+                ->first();
+        } catch (\Throwable $e) {
+            $result = null;
+            LaravelLoggerUtil::loggerException($e);
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param int $lotteryId
+     * @return LotteryResult|null
+     */
+    public function findLatestDrawRecord(int $lotteryId)
+    {
+        try {
+            $result = LotteryResult::where('lottery_id', $lotteryId)
+                ->where('enable', NYEnumConstants::YES)
+                ->whereNotNull('winning_numbers')
+                ->orderByDesc('draw_time')
                 ->first();
         } catch (\Throwable $e) {
             $result = null;

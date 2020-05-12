@@ -13,5 +13,6 @@ Route::group(
     ],
     function () {
         Route::get('/', 'ClientLotteryResultController@list');
+        Route::get('classified', 'ClientLotteryResultController@listByClassified');
     }
 );

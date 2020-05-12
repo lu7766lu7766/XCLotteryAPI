@@ -9,6 +9,8 @@
 namespace Modules\Lottery\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Modules\Lottery\Entities\LotteryClassified;
+use Modules\Lottery\Http\Requests\Client\LotteryResultListByClassifiedRequest;
 use Modules\Lottery\Http\Requests\Client\LotteryResultListRequest;
 use Modules\Lottery\Repositories\LotteryResultRepo;
 use Modules\Lottery\Service\ClientLotteryResultService;
@@ -22,5 +24,14 @@ class ClientLotteryResultController extends Controller
     public function list(LotteryResultListRequest $request)
     {
         return app(ClientLotteryResultService::class)->list($request);
+    }
+
+    /**
+     * @param LotteryResultListByClassifiedRequest $request
+     * @return LotteryClassified|null
+     */
+    public function listByClassified(LotteryResultListByClassifiedRequest $request)
+    {
+        return app(ClientLotteryResultService::class)->listByClassified($request->getClassifiedId());
     }
 }

@@ -15,3 +15,13 @@
 |             | start    | string      |              |      開始日期(格式:YYYY-mm-dd HH:ii:ss)        |   x  |
 |             | end    | string      |              |      結束日期(格式:YYYY-mm-dd HH:ii:ss)        |   x  |
 |             | limit           | integer      |            |      筆數(不傳會回傳全部)        |   x  |
+
+> 彩種分類中獎列表
+
+| 項目         | 內容                         | 類型         | 預設         | 說明                  | 必填  |
+|-------------|-----------------------------|--------------|--------------|---------------------|-------|
+| <b>路徑</b>  |lottery_result/client/classified       |              |              |                     |      |
+| <b>方法</b>  | GET                        |              |              |                     |      |
+| <b>權限</b>  |        |              |              |          -          |      |
+| <b>參數</b>  |                             |              |              |                     |      |
+|             | classified_id    | integer      |     |      彩種分類id        |   o  |
