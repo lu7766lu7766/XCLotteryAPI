@@ -17,9 +17,9 @@ use Modules\Site\Entities\Site;
 use Modules\Site\Http\Requests\ManageSiteUpdateRequest;
 use Modules\Site\Repositories\SiteRepo;
 
-class ManageSiteService
+class SiteService
 {
-    /** @var SiteRepo|null $repo */
+    /** @var SiteRepo $repo */
     private $repo;
 
     public function __construct()
@@ -95,10 +95,10 @@ class ManageSiteService
     ) {
         if (!is_null($isDel)) {
             $this->deleteImage($site, $pathColumn, $cloud);
-            $site->$pathColumn = null;
+            $site->setAttribute($pathColumn, null);
         }
         if (!is_null($file)) {
-            $site->$pathColumn = $this->updateUpload($pathColumn, $cloud, $site, $file);
+            $site->setAttribute($pathColumn, $this->updateUpload($pathColumn, $cloud, $site, $file));
         }
     }
 

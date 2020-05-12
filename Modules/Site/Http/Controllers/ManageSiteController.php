@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Filesystem\Cloud;
 use Modules\Site\Entities\Site;
 use Modules\Site\Http\Requests\ManageSiteUpdateRequest;
-use Modules\Site\Service\ManageSiteService;
+use Modules\Site\Service\SiteService;
 
 class ManageSiteController extends Controller
 {
@@ -21,7 +21,7 @@ class ManageSiteController extends Controller
      */
     public function index()
     {
-        return app(ManageSiteService::class)->first();
+        return app(SiteService::class)->first();
     }
 
     /**
@@ -31,6 +31,6 @@ class ManageSiteController extends Controller
      */
     public function update(ManageSiteUpdateRequest $request)
     {
-        return app(ManageSiteService::class)->update($request, app(Cloud::class));
+        return app(SiteService::class)->update($request, app(Cloud::class));
     }
 }
