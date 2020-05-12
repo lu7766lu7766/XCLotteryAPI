@@ -189,4 +189,25 @@ class LotteryRepo
 
         return $result;
     }
+
+    /**
+     * @param int $id
+     * @return Lottery|null
+     */
+    public function findEnableById(int $id)
+    {
+        try {
+            $result = Lottery::whereKey($id)
+                ->where('enable', NYEnumConstants::YES)
+                ->whereHas('classified', function (Builder $builder) {
+                    $builder->where('enable', NYEnumConstants::YES);
+                })
+                ->first();
+        } catch (\Exception $e) {
+            $result = null;
+            LaravelLoggerUtil::loggerException($e);
+        }
+
+        return $result;
+    }
 }

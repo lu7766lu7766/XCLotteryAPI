@@ -256,6 +256,28 @@
 }
 ```
 
+# 彩種資訊
+
+> 詳細資訊
+
+```
+{
+  "code": "0",
+  "data": {
+      "id": 5,
+      "name": "天津时时彩",
+      "code": "tjssc",
+      "enable": "Y",
+      "description": null,
+      "rule": "",
+      "image_path": "lottery/image/FqEd3jteWfySI40LvcGgUzytFBd2RXNAsCXbHNtK.png",
+      "created_at": "2020-04-17 15:23:19",
+      "updated_at": "2020-04-22 11:34:48",
+      "deleted_at": null
+    }
+}
+```
+
 # 開獎結果
 
 > 列表
