@@ -10,8 +10,10 @@ namespace Modules\Lottery\Repositories;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\Base\Constants\NYEnumConstants;
 use Modules\Base\Util\LaravelLoggerUtil;
+use Modules\Lottery\Entities\Lottery;
 use Modules\Lottery\Entities\LotteryResult;
 
 class LotteryResultRepo
@@ -210,6 +212,62 @@ class LotteryResultRepo
                 ->get();
         } catch (\Throwable $e) {
             $result = Collection::make();
+            LaravelLoggerUtil::loggerException($e);
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param int $lotteryId
+     * @param string|null $period
+     * @param string|null $startPeriod
+     * @param string|null $endPeriod
+     * @param string|null $start
+     * @param string|null $end
+     * @param int|null $limit
+     * @return Lottery|null
+     */
+    public function getDrawResultList(
+        int $lotteryId,
+        string $period = null,
+        string $startPeriod = null,
+        string $endPeriod = null,
+        string $start = null,
+        string $end = null,
+        int $limit = null
+    ) {
+        try {
+            $result = Lottery::whereKey($lotteryId)->where('enable', NYEnumConstants::YES)
+                ->with([
+                    'drawResult' => function (HasMany $builder) use (
+                        $period,
+                        $startPeriod,
+                        $endPeriod,
+                        $start,
+                        $end,
+                        $limit
+                    ) {
+                        if (!is_null($period)) {
+                            $builder->where('period', $period);
+                        }
+                        if (!is_null($startPeriod) && !is_null($endPeriod)) {
+                            $builder->whereBetween('period', [$startPeriod, $endPeriod]);
+                        }
+                        if (!is_null($start) && !is_null($end)) {
+                            $builder->whereBetween('draw_time', [$start, $end]);
+                        }
+                        $builder->where('enable', NYEnumConstants::YES)
+                            ->whereNotNull('winning_numbers')
+                            ->orderByDesc('draw_time');
+                        if (!is_null($limit)) {
+                            $builder->take($limit);
+                        }
+                    }
+                ])
+                ->first();
+        } catch (\Throwable $e) {
+            $result = null;
             LaravelLoggerUtil::loggerException($e);
         }
 

@@ -9,6 +9,7 @@
 namespace Modules\Lottery\Entities;
 
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Base\Entities\BaseORM;
 
@@ -41,5 +42,13 @@ class Lottery extends BaseORM
         )
             ->as('relations')
             ->withTimestamps();
+    }
+
+    /**
+     * @return HasMany
+     */
+    public function drawResult()
+    {
+        return $this->hasMany(LotteryResult::class, 'lottery_id', 'id');
     }
 }
