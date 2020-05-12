@@ -12,21 +12,24 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Base\Entities\BaseORM;
+use Modules\Files\Entities\EditorFilesUsedHelper;
 
 /**
  * Class Lottery
  * @package Modules\Lottery\Entities
  * @property string image_path
- * @property string $code
+ * @property string code
+ * @property string rule
  */
 class Lottery extends BaseORM
 {
-    use SoftDeletes;
+    use SoftDeletes, EditorFilesUsedHelper;
     protected $table = 'lottery';
     protected $fillable = [
         'name',
         'code',
-        'enable'
+        'enable',
+        'rule'
     ];
 
     /**

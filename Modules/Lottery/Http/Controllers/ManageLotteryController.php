@@ -13,15 +13,19 @@ use Illuminate\Contracts\Filesystem\Cloud;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Base\Constants\NYEnumConstants;
 use Modules\Base\Exception\ApiErrorCodeException;
+use Modules\Files\Http\Controllers\EditorFileUsed;
 use Modules\Lottery\Entities\Lottery;
 use Modules\Lottery\Http\Requests\Manage\LotteryInfoRequest;
 use Modules\Lottery\Http\Requests\Manage\LotteryListRequest;
 use Modules\Lottery\Http\Requests\Manage\LotteryUpdateRequest;
+use Modules\Lottery\Http\Requests\Manage\LotteryUpdateRuleRequest;
 use Modules\Lottery\Repositories\LotteryClassifiedRepo;
 use Modules\Lottery\Service\ManageLotteryService;
 
 class ManageLotteryController extends Controller
 {
+    use EditorFileUsed;
+
     /**
      * @param LotteryListRequest $request
      * @return Collection|Lottery[]
@@ -63,7 +67,7 @@ class ManageLotteryController extends Controller
 
     /**
      * @param LotteryInfoRequest $request
-     * @return Lottery
+     * @return Lottery|null
      * @throws ApiErrorCodeException
      */
     public function del(LotteryInfoRequest $request)
@@ -80,5 +84,16 @@ class ManageLotteryController extends Controller
             'lottery_classified' => app(LotteryClassifiedRepo::class)->getAllEnable(),
             'enable'             => NYEnumConstants::enum()
         ];
+    }
+
+    /**
+     * @param LotteryUpdateRuleRequest $request
+     * @return Lottery|null
+     * @throws ApiErrorCodeException
+     * @throws \Throwable
+     */
+    public function updateRule(LotteryUpdateRuleRequest $request)
+    {
+        return app(ManageLotteryService::class)->updateRule($request);
     }
 }

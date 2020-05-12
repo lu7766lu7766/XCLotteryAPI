@@ -126,6 +126,7 @@
       "name": "六合彩",
       "code": "lhc",
       "enable": "Y",
+      "rule": "規則",
       "image_path": null,
       "created_at": "2020-04-16 15:49:03",
       "updated_at": "2020-04-16 15:49:03",
@@ -164,6 +165,7 @@
       "name": "七乐彩",
       "code": "qlc",
       "enable": "Y",
+      "rule": "規則",
       "image_path": null,
       "created_at": "2020-04-16 15:49:03",
       "updated_at": "2020-04-16 15:49:03",
@@ -189,44 +191,56 @@
 {
   "code": "0",
   "data": {
-    "id": 1,
-    "name": "修改彩",
-    "code": "bjpk10",
+    "id": 5,
+    "name": "天津时时彩",
+    "code": "tjssc",
     "enable": "Y",
-    "image_path": "lottery/image/FL8Sxa95IAtr2b2iEfmw5IAp3VOyRSLoApFdErdf.png",
-    "created_at": "2020-04-16 15:49:03",
-    "updated_at": "2020-04-16 15:53:10",
+    "rule": "遊戲規則文案內容",
+    "image_path": "lottery/image/FqEd3jteWfySI40LvcGgUzytFBd2RXNAsCXbHNtK.png",
+    "created_at": "2020-04-17 15:23:19",
+    "updated_at": "2020-05-04 13:31:15",
     "deleted_at": null,
     "classified": [
       {
-        "id": 1,
-        "name": "烏龜彩",
+        "id": 7,
+        "name": "時時彩",
         "enable": "Y",
-        "created_at": "2020-04-08 17:38:55",
-        "updated_at": "2020-04-08 17:39:41",
+        "created_at": "2020-04-20 18:03:44",
+        "updated_at": "2020-04-22 11:40:23",
         "relations": {
-          "lottery_classified_id": 1,
-          "lottery_id": 1,
-          "created_at": "2020-04-16 15:53:10",
-          "updated_at": "2020-04-16 15:53:10"
+          "lottery_id": 5,
+          "lottery_classified_id": 7,
+          "created_at": "2020-04-22 11:33:38",
+          "updated_at": "2020-04-22 11:33:38"
+        }
+      }
+    ],
+    "editor_files": [
+      {
+        "id": 16,
+        "file_path": "editor_files/5N6i3jLifO9nrxAIDMZcGCiMT2tiDAmZ4Az4Xui3.png",
+        "created_at": "2020-05-04 12:24:31",
+        "updated_at": "2020-05-04 12:24:31",
+        "pivot": {
+          "used_id": 5,
+          "editor_file_id": 16,
+          "used_type": "lottery"
         }
       },
       {
-        "id": 2,
-        "name": "威利彩",
-        "enable": "Y",
-        "created_at": "2020-04-08 17:39:06",
-        "updated_at": "2020-04-08 17:39:06",
-        "relations": {
-          "lottery_classified_id": 1,
-          "lottery_id": 2,
-          "created_at": "2020-04-16 15:53:10",
-          "updated_at": "2020-04-16 15:53:10"
+        "id": 17,
+        "file_path": "editor_files/5O0LRWMf9RLAb34dMCcKkIy3W937DvRaHYirZSEv.png",
+        "created_at": "2020-05-04 12:25:17",
+        "updated_at": "2020-05-04 12:25:17",
+        "pivot": {
+          "used_id": 5,
+          "editor_file_id": 17,
+          "used_type": "lottery"
         }
       }
     ]
   }
-} 
+}
 ```
 
 > 編輯
@@ -239,6 +253,7 @@
     "name": "烏拉彩",
     "code": "bjpk10",
     "enable": "Y",
+    "rule": "規則",
     "image_path": "lottery/image/xpxnlfGug77EfAb2k42jEKrOHyMgt7rhDfpgX6J7.png",
     "created_at": "2020-04-16 15:49:03",
     "updated_at": "2020-04-16 17:04:30",
@@ -285,6 +300,7 @@
     "name": "烏拉彩",
     "code": "bjpk10",
     "enable": "Y",
+    "rule": "規則",
     "image_path": "lottery/image/xpxnlfGug77EfAb2k42jEKrOHyMgt7rhDfpgX6J7.png",
     "created_at": "2020-04-16 15:49:03",
     "updated_at": "2020-04-16 17:04:30",
@@ -327,6 +343,72 @@
       "N"
     ]
   }
+}
+```
+
+> 彩種規則編輯
+
+```
+{
+  "code": "0",
+  "data": {
+    "id": 5,
+    "name": "天津时时彩",
+    "code": "tjssc",
+    "enable": "Y",
+    "rule": "遊戲規則文案內容",
+    "image_path": "lottery/image/FqEd3jteWfySI40LvcGgUzytFBd2RXNAsCXbHNtK.png",
+    "created_at": "2020-04-17 15:23:19",
+    "updated_at": "2020-05-04 13:31:15",
+    "deleted_at": null,
+    "editor_files": [
+      {
+        "id": 16,
+        "file_path": "editor_files/5N6i3jLifO9nrxAIDMZcGCiMT2tiDAmZ4Az4Xui3.png",
+        "created_at": "2020-05-04 12:24:31",
+        "updated_at": "2020-05-04 12:24:31",
+        "pivot": {
+          "used_id": 5,
+          "editor_file_id": 16,
+          "used_type": "lottery"
+        }
+      },
+      {
+        "id": 17,
+        "file_path": "editor_files/5O0LRWMf9RLAb34dMCcKkIy3W937DvRaHYirZSEv.png",
+        "created_at": "2020-05-04 12:25:17",
+        "updated_at": "2020-05-04 12:25:17",
+        "pivot": {
+          "used_id": 5,
+          "editor_file_id": 17,
+          "used_type": "lottery"
+        }
+      }
+    ]
+  }
+}
+```
+
+> 編輯器圖片上傳
+
+```
+{
+  "code": "0",
+  "data": {
+    "file_path": "editor_files/IRCdUYo1KuSYTQG1uZv0P06oZuHunC5PhWF7yDlU.png",
+    "updated_at": "2020-05-04 13:26:54",
+    "created_at": "2020-05-04 13:26:54",
+    "id": 20
+  }
+}
+```
+
+> 編輯器圖片刪除
+
+```
+{
+  "code": "0",
+  "data": "1"
 }
 ```
 

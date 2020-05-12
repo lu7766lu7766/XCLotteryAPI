@@ -10,6 +10,7 @@ use Modules\Announcement\Entities\Announcement;
 use Modules\Copywriting\Entities\Copywriting;
 use Modules\Files\Contracts\IEditorFilesProvider;
 use Modules\Files\Repositories\EditorFilesRepo;
+use Modules\Lottery\Entities\Lottery;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -38,7 +39,8 @@ class AppServiceProvider extends ServiceProvider
         });
         Relation::morphMap([
             'announcement' => Announcement::class,
-            'copywriting'  => Copywriting::class
+            'copywriting'  => Copywriting::class,
+            'lottery'      => Lottery::class,
         ]);
     }
 }

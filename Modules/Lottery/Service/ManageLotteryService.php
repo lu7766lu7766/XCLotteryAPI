@@ -19,6 +19,7 @@ use Modules\Base\Exception\ApiErrorCodeException;
 use Modules\Lottery\Entities\Lottery;
 use Modules\Lottery\Http\Requests\Manage\LotteryListRequest;
 use Modules\Lottery\Http\Requests\Manage\LotteryUpdateRequest;
+use Modules\Lottery\Http\Requests\Manage\LotteryUpdateRuleRequest;
 use Modules\Lottery\Repositories\LotteryRepo;
 
 class ManageLotteryService
@@ -81,7 +82,8 @@ class ManageLotteryService
         return $orm->load([
             'classified' => function (BelongsToMany $builder) {
                 $builder->where('enable', NYEnumConstants::YES);
-            }
+            },
+            'editorFiles'
         ]);
     }
 
@@ -127,7 +129,7 @@ class ManageLotteryService
 
     /**
      * @param int $id
-     * @return Lottery
+     * @return Lottery|null
      * @throws ApiErrorCodeException
      */
     public function del(int $id)
@@ -141,6 +143,29 @@ class ManageLotteryService
         }
 
         return $orm;
+    }
+
+    /**
+     * @param LotteryUpdateRuleRequest $request
+     * @return Lottery|null
+     * @throws ApiErrorCodeException
+     * @throws \Throwable
+     */
+    public function updateRule(LotteryUpdateRuleRequest $request)
+    {
+        $orm = $this->lotteryRepo->info($request->getId());
+        if (is_null($orm)) {
+            throw new ApiErrorCodeException(OOOO1CommonCodes::MODEL_NOT_FOUND);
+        }
+        \DB::transaction(function () use ($orm, $request) {
+            $orm->rule = $request->getRule();
+            if (!$this->lotteryRepo->saveData($orm)) {
+                throw new ApiErrorCodeException(OOOO1CommonCodes::UPDATE_FAIL);
+            }
+            $orm->editorFiles()->sync($request->getEditorImageIds());
+        });
+
+        return $orm->load('editorFiles');
     }
 
     /**

@@ -20,6 +20,9 @@ Route::group([
     Route::group(['middleware' => 'can:update,' . LotteryPolicy::class], function () {
         Route::get('info', 'ManageLotteryController@info');
         Route::post('update', 'ManageLotteryController@update');
+        Route::post('update_rule', 'ManageLotteryController@updateRule');
+        Route::post('image/upload', 'ManageLotteryController@uploadImage');
+        Route::post('image/remove', 'ManageLotteryController@removeImage');
     });
     Route::delete('del', 'ManageLotteryController@del')
         ->middleware('can:delete,' . LotteryPolicy::class);
